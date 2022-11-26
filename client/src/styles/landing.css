@@ -1,0 +1,55 @@
+.container-lp{
+    background: url("https://www.teahub.io/photos/full/193-1938948_hd-rick-and-morty-wallpaper.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+}
+.landingPage__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.landingPage__container__page{
+    color: rgb(95, 241, 120);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background-color: rgba(61, 89, 116, 0.699);
+    padding: 1rem;
+    border-radius: 20px;
+    width: fit-content;
+    font-family: 'Zidan', sans-serif;
+    text-shadow: 2px 2px 2px black;
+}
+.sub{
+    color: rgb(231, 236, 232);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background-color: rgba(137, 156, 173, 0.699);
+    padding: 1rem;
+    border-radius: 20px;
+    width: fit-content;
+    border:rgb(95, 241, 120) 2px solid;
+    text-shadow: 2px 2px 2px black;
+}
+.sub:hover{
+    background-color: rgba(65, 98, 128, 0.699);
+    color: rgb(95, 241, 120);
+    border:rgb(95, 241, 120) 2px solid;
+}
+.landingPage__container__footer{
+    font-size: 1rem;
+}
+.landingPage__container__footer a{
+    color: rgb(247, 252, 248);
+    text-decoration: none;
+    font-size: larger;
+}
+.landingPage__container__footer a:hover{
+    color: rgb(18, 19, 18);
+    text-decoration: none;
+    font-size: larger;
+    text-shadow: 2px 2px 2px white;
+}
