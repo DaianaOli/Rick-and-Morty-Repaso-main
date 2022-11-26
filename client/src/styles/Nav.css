@@ -1,0 +1,23 @@
+.search{
+    min-width: 200px;
+}
+.filters{
+    color: #fff;
+    text-shadow: 0 0 3px #000;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    background-color: rgba(129, 243, 154, 0.541);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 1rem;
+    box-shadow: 0 0 3px #000;
+}
+.filter{
+    display: flex;
+    flex-direction: column;
+    background-color: #97f181c0;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 3px #000;
+}
