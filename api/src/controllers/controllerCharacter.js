@@ -1,5 +1,6 @@
 const axios = require("axios");
-const {Character, Episode, Op} = require("../db.js")
+const {Character, Episode, } = require("../db.js")
+const { Op } = require("sequelize");
 const URL = "https://rickandmortyapi.com/api/character/";
  
 
@@ -38,11 +39,10 @@ async function getCharacters(req, res, next){
         }
         
             let result = allChars.slice((charXPage * (page -  1)) , (charXPage * (page -  1)) + charXPage ) 
-
-        
+            
         return res.send({
             result: result, 
-            count: allChars.length
+            count: allChars.length,
         })
       
 
@@ -55,7 +55,7 @@ async function getCharactersById(req, res, next){
     try {
         let {id} = req.params
         if(id<2000){
-        let apiCharacter= (await axios.get(URL+id)).data
+        let apiCharacter= (await axios.get(`https://rickandmortyapi.com/api/location/${id}`)).data
         var character={
             id: apiCharacter.id,
             name: apiCharacter.name,
@@ -75,12 +75,13 @@ async function getCharactersById(req, res, next){
 
 function createCharacter(req, res, next){
     try {
-        let {image, name, species,origin, epId} = req.body
+        let {image, name, species,origin, status, epId} = req.body
         let newCharacter ={            
             image,
             name,
             species,
             origin,
+            status,
         }
 
         Character.create(newCharacter)
@@ -96,8 +97,11 @@ function createCharacter(req, res, next){
     }
 }
 
+
+
 module.exports={
     getCharacters,
     getCharactersById,
-    createCharacter
+    createCharacter,
+
 }

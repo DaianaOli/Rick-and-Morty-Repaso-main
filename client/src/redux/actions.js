@@ -54,3 +54,31 @@ export function getCharacterById(id) {
       )
   }
 }
+
+export function filterStatus(status) {
+  return {
+    type: 'FILTER_STATUS',
+    payload: status,
+  }
+}
+
+export function filterSpecies(species) {
+  return {
+    type: 'FILTER_SPECIES',
+    payload: species,
+  }
+}
+
+export function filterLocation  (location) {
+  return {
+    type: 'FILTER_LOCATION',
+    payload: location,
+  }
+}
+
+export function filterAlphabetically(alphabet) {
+  return {
+    type: 'FILTER_ALPHABETICALLY',
+    payload: alphabet,
+  }
+}

@@ -7,17 +7,32 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
-    background-color: rgba(129, 243, 154, 0.541);
+    background-color: rgba(13, 14, 13, 0.541);
     padding: 1rem;
     border-radius: 1rem;
     margin: 1rem;
     box-shadow: 0 0 3px #000;
+    border: #fff 1px solid;
+
 }
 .filter{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
     background-color: #97f181c0;
     padding: 1rem;
     border-radius: 1rem;
     box-shadow: 0 0 3px #000;
+    border: #fff 1px solid;
+}
+.title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    background-color: #97f181c0;
+    padding: 1rem;
+    box-shadow: 0 0 3px #000;
+    border : 1px solid #fff;
 }

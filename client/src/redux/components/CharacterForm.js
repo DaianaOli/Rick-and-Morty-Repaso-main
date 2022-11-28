@@ -2,54 +2,77 @@ import React, { useState } from 'react'
 import ("../../styles/createC.css") 
 
 export default function CharacterForm({ allEpisodes, handleChange, handleSubmit }) {
-  let [name, setName] = useState('')
-  let [image, setImage] = useState('')
-  let [status, setStatus] = useState('')
-  let [episode, setEpisode] = useState('')
-
+  const [name, setName] = useState('')
+  const [status, setStatus] = useState('')
+  const [species, setSpecies] = useState('')
+  const
+  [origin, setOrigin] = useState('')
+  const [image, setImage] = useState('')
+  const [epId, setEpId] = useState('')
+  const payload = {
+    name: name,
+    status: status,
+    species: species,
+    origin: origin,
+    image: image,
+    epId: epId
+    
+  }
+  console.log(payload)
   return (
-    <div className='form'>
-      <h2>CREATE  A  CHARACTER</h2>
+    <form onSubmit={(e) => handleSubmit(e, payload)}>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name:</label>
+      <div className='form-group'>
+        <label htmlFor='name'>Name</label>
         <input
-          name='name'
-          value={name}
+          type='text'
+          className='form-control'
+          id='name'
+          placeholder='Enter name'
           onChange={(e) => handleChange(e, setName)}
         />
-
-        <label htmlFor='image'>Image URL:</label>
-        <input
-          name='image'
-          value={image}
-          onChange={(e) => handleChange(e, setImage)}
-        />
-
-        <p>Status:</p>
-        <div onChange={(e) => handleChange(e, setStatus)}>
-          <input name='status' value='Alive' type='radio' />
-          <label htmlFor='Alive'>Alive</label>
-          <input name='status' value='Dead' type='radio' />
-          <label htmlFor='Dead'>Dead</label>
-          <input name='status' value='Unknown' type='radio' />
-          <label htmlFor='Unknown'>Unknown</label>
-        </div>
-        <div className='epi'>Episodes:
-        <select className='select' value={episode} onChange={(e) => handleChange(e, setEpisode)}>
-          <option disabled>Select episodes...</option>
-          {allEpisodes &&
-            allEpisodes.map((ep) => {
-              return (
-                <option key={ep.id} value={ep.id}>
-                  {ep.name}
-                </option>
-              )
-            })}
+      </div>
+      <div className='form-group'>
+        <label htmlFor='status'>Status</label>
+        <select className='form-control' id='status' onChange={(e) => handleChange(e, setStatus)}>
+          <option value=''>Select status</option>
+          <option value='Alive'>Alive</option>
+          <option value='Dead'>Dead</option>
+          <option value='unknown'>Unknown</option>
         </select>
-        </div>
-        <button className='button' type='submit'>Create</button>
-      </form>
-    </div>
+      </div>
+      <div className='form-group'>
+        <label htmlFor='species'>Species</label>
+        <select className='form-control' id='species' onChange={(e) => handleChange(e, setSpecies)}>
+          <option value=''>Select species</option>
+          <option value='Human'>Human</option>
+          <option value='Alien'>Alien</option>
+        </select>
+      </div>
+      <div className='form-group'>
+        <label htmlFor='origin'>Origin</label>
+        <input type='text' className='form-control' id='origin' placeholder='Enter origin' onChange={(e) => handleChange(e, setOrigin)} />
+      </div>
+      <div className='form-group'>
+
+        <label htmlFor='epId'>Episode</label>
+        <select className='form-control' id='epId' onChange={(e) => handleChange(e, setEpId)}>
+          <option value=''>Select episode</option>
+          {allEpisodes.map((ep) => (
+            <option key={ep.id} value={ep.id}>
+
+              {ep.name} 
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className='form-group'>
+        <label htmlFor='image'>Image</label>
+        <input type='text' className='form-control' id='image' placeholder='Enter image' onChange={(e) => handleChange(e, setImage)} />
+      </div>
+      <button type='submit' className='btn btn-primary'>
+        Submit
+      </button>
+    </form>
   )
 }
