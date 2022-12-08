@@ -55,12 +55,12 @@ async function getCharactersById(req, res, next){
     try {
         let {id} = req.params
         if(id<2000){
-        let apiCharacter= (await axios.get(`https://rickandmortyapi.com/api/location/${id}`)).data
+        let apiCharacter= (await axios.get(`https://rickandmortyapi.com/api/character/${id}`)).data
         var character={
             id: apiCharacter.id,
             name: apiCharacter.name,
             species: apiCharacter.species,
-            origin: apiCharacter.origin,
+            origin: apiCharacter.origin.name,
             image: apiCharacter.image
         }
     }else{
@@ -76,25 +76,24 @@ async function getCharactersById(req, res, next){
 function createCharacter(req, res, next){
     try {
         let {image, name, species,origin, status, epId} = req.body
+        // console.log(req.body)
         let newCharacter ={            
             image,
             name,
             species,
             origin,
-            status,
+            status
         }
-
         Character.create(newCharacter)
-        .then(character=>{
-          character.addEpisode(epId) 
-          res.json({...character, epId}) 
-        } )
-
-
-
+        .then((character)=>{
+            character.addEpisodes(epId)
+            return res.send(character)
+        }
+        )
     } catch (error) {
-        next(error)
+        console.log("no va",error)
     }
+
 }
 
 

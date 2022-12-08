@@ -44,7 +44,7 @@ export default function Home() {
 
       </div>
       <div className='contenedor'>
-      {characters.result &&
+      {characters.result ?
         characters.result.map((e) => {
           return (
             <div className='card' key={e.id}>
@@ -68,11 +68,11 @@ export default function Home() {
                       </tr>
                       <tr>
                         <td>Origin:</td>
-                        <td>{e.origin.name}</td>
+                        {/* <td>{e.origin}</td> */}
                       </tr>
                       <tr>
                         <td>Total episodes:</td>
-                        <td>{e.episode.length}</td>
+                        {/* <td>{e.episode ? e.episode.length : 0}</td> */}
                       </tr>
                       <tr>
                       <td>Location:</td>
@@ -84,14 +84,14 @@ export default function Home() {
                 </div>
                 <div className='episodes'>
                 <h3>Episodes
-                  <select>{e.episode.map((e)=>{
-                    return <option >{e}</option>})}
+                  <select>{e.episode? e.episode.map((e) => {
+                    return <option >{e}</option>}) : null}
                   </select>
                 </h3>
                 </div>
             </div>
           )
-        })}
+        }): <h1>Loading...</h1>}
       </div>
     </div>
   )
