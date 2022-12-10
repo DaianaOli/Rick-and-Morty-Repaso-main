@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getEpisodes, postCharacter } from '../actions'
+import React from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { getEpisodes, postCharacter } from '../actions'
 import CharacterForm from './CharacterForm'
 import {Link} from 'react-router-dom'
 
@@ -8,6 +8,9 @@ export default function CreateCharacter() {
   return (
     <div>
     <CharacterForm />
+    <Link to='/characters'>
+    <button className='button'>Back</button>
+    </Link>
     </div>
     )
     

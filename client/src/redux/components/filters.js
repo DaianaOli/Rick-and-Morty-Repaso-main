@@ -2,8 +2,10 @@ import React from 'react'
 import { filterStatus, filterAlphabetically
     , filterLocation,filterSpecies, getCharacters } from '../actions';
 import { useDispatch, } from 'react-redux';
+import Swal from 'sweetalert2';
 
 const Filters = () => {
+    
     const dispatch = useDispatch();
 
     const handleStatus = (e) => {
@@ -19,7 +21,23 @@ const Filters = () => {
         dispatch(filterAlphabetically(e.target.value));
     };
     const handleReset = () => {
-        dispatch(getCharacters({}));
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, reset it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(getCharacters({}));
+                Swal.fire(
+                    'Reset!',
+                    'Your filters have been reset.',
+                    'success'
+                )
+            }
+        })
     };
 
 

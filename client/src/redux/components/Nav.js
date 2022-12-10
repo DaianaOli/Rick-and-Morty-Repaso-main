@@ -3,13 +3,24 @@ import{Link} from 'react-router-dom'
 import { getCharacters } from '../actions';
 import { useDispatch } from 'react-redux';
 import "../../styles/Nav.css";
+import Swal from 'sweetalert2'
 
 const Nav = () => {
     const dispatch = useDispatch();
-  const handleSearch = (e) => {
-    e.preventDefault();
-    dispatch(getCharacters({name:e.target.value}));
-    // console.log(e.target.value);
+  const handleSearch = () => {
+    let name = document.querySelector('input').value;
+    Swal.fire({
+      title: 'Searching...',
+      text: 'Please wait',
+      imageUrl: 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
+      showConfirmButton: false,
+      timer: 2000
+    })
+    dispatch(getCharacters({name}));
+    
   };
 
   return (
@@ -23,13 +34,23 @@ const Nav = () => {
       <Link to="/about">
         <button className="button">About</button>
       </Link>
+      <button className="button" onClick={() => Swal.fire({
+          title: 'Welcome to the Rick and Morty App',
+          text: 'You can search for a character by name, filter by status, species and origin, and create your own character',
+          imageUrl: 'https://www.vodafone.es/c/statics/imagen/img_OG_Rick_y_Morty_T4_V2.jpg',
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: 'Custom image',
+        })}>Help</button>
       <h1 className="title">Welcome to the Rick and Morty App</h1>
       <div className="search">
         <input
           type="text"
           placeholder="Search by name"
-          onChange={(e) => handleSearch(e)}
-        />
+          ></input>
+        <button className="button" onClick={handleSearch}>Search</button>
+        
+
             </div>
     </div>
   );

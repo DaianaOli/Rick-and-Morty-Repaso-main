@@ -2,7 +2,6 @@ const axios = require("axios");
 const {Character, Episode, } = require("../db.js")
 const { Op } = require("sequelize");
 const URL = "https://rickandmortyapi.com/api/character/";
- 
 
 
 async function getCharacters(req, res, next){
@@ -16,11 +15,12 @@ async function getCharacters(req, res, next){
         let apiCharacters
         let dbCharacters
         let allChars=[]
-        page = page || 1 
-        const charXPage = 20;
+        page = page || 1
+        charXPage = 4
+        
 
         if(name && name !== ""){
-            apiCharacters = (await axios.get(`https://rickandmortyapi.com/api/character/?name=${name}`)).data.results
+            apiCharacters = (await axios.get(`${URL}?name=${name}`)).data.results
             dbCharacters= await Character.findAll({
                 where:{
                     name:{
@@ -32,41 +32,19 @@ async function getCharacters(req, res, next){
         }
         else{
             
-            apiCharacters = (await axios.get("https://rickandmortyapi.com/api/character")).data.results
+            apiCharacters = (await axios.get(`${URL}`)).data
             dbCharacters= await Character.findAll({include: Episode})
 
             allChars= dbCharacters.concat(apiCharacters)
         }
-        
-            let result = allChars.slice((charXPage * (page -  1)) , (charXPage * (page -  1)) + charXPage ) 
+            
+            let result = allChars
             
         return res.send({
             result: result, 
             count: allChars.length,
         })
       
-
-    } catch (error) {
-        next(error)
-    }
-}
-
-async function getCharactersById(req, res, next){
-    try {
-        let {id} = req.params
-        if(id<2000){
-        let apiCharacter= (await axios.get(`https://rickandmortyapi.com/api/character/${id}`)).data
-        var character={
-            id: apiCharacter.id,
-            name: apiCharacter.name,
-            species: apiCharacter.species,
-            origin: apiCharacter.origin.name,
-            image: apiCharacter.image
-        }
-    }else{
-        var character= await Character.findByPk(id)
-    }   
-    res.json(character)
 
     } catch (error) {
         next(error)
@@ -100,7 +78,6 @@ function createCharacter(req, res, next){
 
 module.exports={
     getCharacters,
-    getCharactersById,
     createCharacter,
 
 }

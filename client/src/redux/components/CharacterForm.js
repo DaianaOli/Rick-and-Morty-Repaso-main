@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import {postCharacter, getEpisodes} from "../actions";
 import * as Yup from "yup";
@@ -10,30 +10,30 @@ export default function CharacterForm() {
   const dispatch = useDispatch();
   const allEpisodes = useSelector((state) => state.episodes);
 
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
 
-  const CLOUD_NAME = "CLOUD_NAME";
-  const UPLOAD_PRESET = "UPLOAD_PRESET";
+  // const CLOUD_NAME = "CLOUD_NAME";
+  // const UPLOAD_PRESET = "UPLOAD_PRESET";
 
-  const upload = async (e) => {
-      try {
-        const files = e.target.files;
-        const data = new FormData();
-        data.append("file", files[0]);
-        data.append("upload_preset", "coffeeStreetData");
-        const response = await fetch(
-          "https://api.cloudinary.com/v1_1/db6aq84ze/image/upload",
-          {
-            method: "POST",
-            body: data
-          }
-        );
-        const file = await response.json();
-        return file.secure_url;
-      } catch (error) {
-        return "";
-      }
-    };
+  // const upload = async (e) => {
+  //     try {
+  //       const files = e.target.files;
+  //       const data = new FormData();
+  //       data.append("file", files[0]);
+  //       data.append("upload_preset", "coffeeStreetData");
+  //       const response = await fetch(
+  //         "https://api.cloudinary.com/v1_1/db6aq84ze/image/upload",
+  //         {
+  //           method: "POST",
+  //           body: data
+  //         }
+  //       );
+  //       const file = await response.json();
+  //       return file.secure_url;
+  //     } catch (error) {
+  //       return "";
+  //     }
+  //   };
 
   useEffect(() => {
     dispatch(getEpisodes());

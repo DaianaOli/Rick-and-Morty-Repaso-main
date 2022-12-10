@@ -17,7 +17,7 @@ export default function LandingPage(){
                     <button className="sub">Find your favorite character</button>
                     </Link>
                     <div className="landingPage__container__footer">
-                        <p>Created by: <a href="https://linkedin.com/in/luz-daiana-olivares-/" target="_blank">Luz Daiana Olivares</a></p>
+                        <p>Created by: <a href="https://linkedin.com/in/luz-daiana-olivares-/" target="_blank" rel ='noreferrer'>Luz Daiana Olivares</a></p>
                         </div>
                 </div>
             </div>

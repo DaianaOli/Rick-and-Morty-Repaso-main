@@ -1,8 +1,8 @@
-import { GET_ALL_CHARACTERS, GET_EPISODES,GET_CHARACTER_BY_ID } from './actions'
+import { GET_ALL_CHARACTERS, GET_EPISODES, } from './actions'
 
 const initialState = {
   characters: {},
-  characterById: {},
+  copyCharacters:{},
   episodes: [],
 }
 
@@ -12,25 +12,22 @@ function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         characters: payload,
+        copyCharacters: payload,
       }
     case GET_EPISODES:
       return {
         ...state,
         episodes: payload,
       }
-      case GET_CHARACTER_BY_ID:
-      return {
-        ...state,
-        characterById: payload,
-      }
-      case 'FILTER_STATUS':
+    case 'FILTER_STATUS':
+      let status = state.copyCharacters.result
       return {
         ...state,
         characters: {
           ...state.characters,
-          result: state.characters.result.filter((e) => e.status === payload),
+          result: status.filter((e) => e.status === payload),
         },
-      }
+      }      
       case 'FILTER_SPECIES':
       return {
         ...state,
@@ -81,7 +78,7 @@ function reducer(state = initialState, { type, payload }) {
           },
         }
       }
-
+break
     default: {
       return state
     }

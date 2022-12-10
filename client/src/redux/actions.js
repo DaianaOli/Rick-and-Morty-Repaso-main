@@ -3,6 +3,8 @@ export const GET_ALL_CHARACTERS = 'GET_ALL_CHARACTERS'
 export const POST_CHARACTER = 'POST_CHARACTER'
 export const GET_EPISODES = 'GET_EPISODES'
 export const GET_CHARACTER_BY_ID = 'GET_CHARACTER_BY_ID'
+export const NEXT_PAGE = 'NEXT_PAGE'
+export const PREVIOUS_PAGE = 'PREVIOUS_PAGE'
 
 export function getCharacters({ name, order, page }) {
   return (dispatch) => {
@@ -56,6 +58,7 @@ export function getCharacterById(id) {
 }
 
 export function filterStatus(status) {
+  console.log(status)
   return {
     type: 'FILTER_STATUS',
     payload: status,

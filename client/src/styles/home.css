@@ -27,7 +27,13 @@
     animation: myAnim 1s ease 0s 1 normal forwards;
     
 }
-
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: rgba(2, 2, 2, 0.8);
+}
 .card img{
     width: 30%;
     border-radius: 30px;
