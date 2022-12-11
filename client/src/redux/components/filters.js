@@ -5,21 +5,27 @@ import { useDispatch, } from 'react-redux';
 import Swal from 'sweetalert2';
 
 const Filters = () => {
-    
     const dispatch = useDispatch();
 
     const handleStatus = (e) => {
+        if (e.target.value === 'All') {
+            dispatch(getCharacters({}));
+        }
         dispatch(filterStatus(e.target.value));
     };
+
     const handleSpecies = (e) => {
         dispatch(filterSpecies(e.target.value));
     };
+
     const handleLocation = (e) => {
         dispatch(filterLocation(e.target.value));
     };
+
     const handleAlphabetically = (e) => {
         dispatch(filterAlphabetically(e.target.value));
     };
+
     const handleReset = () => {
         Swal.fire({
             title: 'Are you sure?',
@@ -40,10 +46,8 @@ const Filters = () => {
         })
     };
 
-
     return (
         <div className="filters">
-
             <div className="filter">
                 <button className="btn btn-primary" onClick={handleReset}>Reset Filters</button>
             </div>
@@ -59,7 +63,6 @@ const Filters = () => {
             <div className="filter">
                 <h3>Filter by species</h3>
                 <select onChange={handleSpecies}>
-
                     <option value="All">All</option>
                     <option value="Human">Human</option>
                     <option value="Alien">Alien</option>
@@ -96,7 +99,6 @@ const Filters = () => {
             </div>
         </div>
     );
-
 }
 
 export default Filters

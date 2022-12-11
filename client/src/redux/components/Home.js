@@ -1,34 +1,50 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-// import { Link } from 'react-router-dom'
 import { getCharacters } from '../actions'
 import Nav from './Nav'
 import Filters from './filters';
 import Pagination from './Pagination';
+import Swal from 'sweetalert2';
 import ("../../styles/home.css")
 
 export default function Home() {
   let dispatch = useDispatch()
   const characters = useSelector((state) => state.characters)
+  const charact = useSelector((state)=> state.characters.result)
+  const [currentPage, setCurrentPage] = useState(1)
+  // eslint-disable-next-line
+  const[characterXpage, setCharacterXpage] = useState(4)
+  const indexOfLastCharacter = currentPage * characterXpage
+  const indexOfFirstCharacter = indexOfLastCharacter - characterXpage
+  const currentCharacters = charact?.slice(indexOfFirstCharacter, indexOfLastCharacter)
+  
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber)
+}
 
   useEffect(() => {
     dispatch(getCharacters({}))
   }, [dispatch])
-  console.log('CHARACTERS', characters)
 
-
+  const alertNF = () => {
+    Swal.fire({
+      icon: "error",
+      title: 'Not yet available',
+      text: 'Sorry for the inconvenience, soon available',
+    })
+  }
 
 
   return (
     <div className='container-h'>
       <Nav />
       <Filters/>
-      <Pagination nextPage={characters.result ? characters.result[0].info.next : null} prevPage={characters.result ? characters.result[0].info.prev : null}/>
+      <Pagination characterXpage={characterXpage} total={characters.count} paginate={paginate}/>
       <div className='contenedor'>
-      {characters.result ?
-        characters.result[0].results.map((e) => {
+      { currentCharacters  ? (
+        currentCharacters.map((e) => {
           return (
-            <div className='card' key={e.id}>
+              <div className='card' key={e.id}>
                 <div className='card-info' >
                   <h1>{e.name}</h1>
                   <img  src={e.image} alt={e.name} />
@@ -61,19 +77,31 @@ export default function Home() {
                       </tr>
                     </tbody>
                   </table>
-
                 </div>
                 <div className='episodes'>
                 <h3>Episodes
-                  <select>{e.episode? e.episode.map((e) => {
-                    return <option key={e}>{e}</option>}) : null}
+                  <select onChange={()=> alertNF()}  >{e.episode? e.episode.map((e) => {
+                    return <option  key={e}>{e}</option>}) : null}
                   </select>
                 </h3>
                 </div>
             </div>
           )
-        }): <h1>Loading...</h1>}
+        })
+      )
+        : typeof currentCharacters === "string" ? (
+            <div className='cont-nf'>
+              <p className='nf'>GAME NOT FOUND</p>
+              {/* <img className="notfound" src={notFound} alt="error404"></img> */}
+            </div>
+          ) : (
+            <div className='cont-ld'>
+              <p className='load'>LOADING</p>
+              {/* <img className="search" src={loading} alt=""></img> */}
+            </div>
+          )}
       </div>
+      <Pagination characterXpage={characterXpage} total={characters.count} paginate={paginate}/>
     </div>
   )
 }

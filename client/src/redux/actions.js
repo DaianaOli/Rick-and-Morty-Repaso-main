@@ -21,7 +21,7 @@ export function getCharacters({ name, order, page }) {
         })
       })
       .catch((err) => {
-        console.log(err)
+        return alert("Sorry, not found", err)
       })
   }
 }
@@ -58,7 +58,7 @@ export function getCharacterById(id) {
 }
 
 export function filterStatus(status) {
-  console.log(status)
+  // console.log(status)
   return {
     type: 'FILTER_STATUS',
     payload: status,

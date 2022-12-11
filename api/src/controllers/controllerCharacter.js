@@ -31,23 +31,18 @@ async function getCharacters(req, res, next){
             allChars= dbCharacters.concat(apiCharacters)
         }
         else{
-            
-            apiCharacters = (await axios.get(`${URL}`)).data
+            apiCharacters = (await axios.get(`${URL}`)).data.results
             dbCharacters= await Character.findAll({include: Episode})
-
             allChars= dbCharacters.concat(apiCharacters)
         }
-            
             let result = allChars
-            
-        return res.send({
+            return res.send({
             result: result, 
             count: allChars.length,
         })
-      
-
     } catch (error) {
-        next(error)
+        console.log("no va",error)
+        return res.sendStatus(500)
     }
 }
 

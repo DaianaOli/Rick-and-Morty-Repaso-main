@@ -1,43 +1,19 @@
 import React from "react";
-import Swal from "sweetalert2";
-import { useDispatch } from "react-redux";
-import { getCharacters } from "../actions";
 
-export default function Pagination( nextPage, prevPage) {
-    const dispatch = useDispatch();
-    const handleNextPage = () => {
-        if (nextPage) {
-            dispatch(getCharacters({ page: nextPage }));
-        } else {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "No hay más personajes!",
-            });
-        }
-    };
-
-    const handlePrevPage = () => {
-        if (prevPage) {
-            dispatch(getCharacters({ page: prevPage }));
-        } else {
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "No hay más personajes!",
-            });
-        }
-    };
-
-
+export default function Pagination({characterXpage, total, paginate}) {
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(total / characterXpage); i++) {
+        pageNumbers.push(i)
+    }
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-12">
-                    <button className="btn btn-primary" onClick={handlePrevPage}>Prev</button>
-                    <button className="btn btn-primary" onClick={handleNextPage}>Next</button>
-                </div>
-            </div>
-        </div>
+        <div className='pagination'>
+            {
+                pageNumbers && pageNumbers.map(n => (
+                    <button className='button' key={n} onClick={() => paginate(n)}>
+                        {n}
+                    </button>
+                ))
+            }
+    </div>
     )
 }
