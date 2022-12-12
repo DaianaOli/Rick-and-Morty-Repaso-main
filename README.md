@@ -1,7 +1,16 @@
-# Repaso PI 
+# Repaso 
 ## Rick and Morty
 <p align='left'>
-    <img src='https://www.vodafone.es/c/statics/imagen/img_OG_Rick_y_Morty_T4_V2.jpg' </img>
+    <p>Landing</p>
+    <img src='https://res.cloudinary.com/dcpcja2qg/image/upload/v1670785080/Captura_de_pantalla_181_xc2zps.png' </img>
+     <p>Help</p>
+    <img src='https://res.cloudinary.com/dcpcja2qg/image/upload/v1670785526/Captura_de_pantalla_190_rda7qs.png' </img>
+     <p>Card Character </p>
+    <img src='https://res.cloudinary.com/dcpcja2qg/image/upload/v1670785277/Captura_de_pantalla_183_xx3rr3.png' </img>
+     <p>Nav</p>
+    <img src='https://res.cloudinary.com/dcpcja2qg/image/upload/v1670785658/Captura_de_pantalla_189_fwlm02.png' </img>
+     <p>Create Form (in process)</p>
+    <img src='https://img.freepik.com/vector-gratis/ilustracion-concepto-proceso_114360-4229.jpg?auto=format&h=200' </img>
 </p>
 
 ## Objetivos del Proyecto
@@ -10,19 +19,6 @@ Construir una App utlizando React, Redux, Node y Sequelize.
 ## Comenzando
 1. Forkear el repositorio para tener una copia del mismo en sus cuentas
 2. Clonar el repositorio en sus computadoras para comenzar a trabajar
-
-Tendrán un boilerplate con la estructura general tanto del servidor como de cliente.
-
-***IMPORTANTE:*** Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
-
-Actualmente las versiónes necesarias son:
-
-Node: 12.18.3 o mayor NPM: 6.14.16 o mayor Para verificar que versión tienen instalada:
-```
-node -v
-
-npm -v
-```
 
 ## BoilerPlate
 El boilerplate cuenta con dos carpetas: ```api``` y ```client```. En estas carpetas estará el código del back-end y el front-end respectivamente.
@@ -39,14 +35,6 @@ Adicionalmente será necesario que creen desde psql una base de datos con el nom
 
 El contenido de client fue creado usando: Create React App.
 
-## Enunciado
-En este ejercicio vamos a crear una APP que utilice la API de [Rick and Morty](https://rickandmortyapi.com/). Vamos a crear nuestra app utilizando **REACT* y *REDUX** en la que podremos:
-- Ver todos los personajes en la página principal.
-- Crear un personaje.
-
-## Endpoints/Flags a utilizar
-- [ ] GET https://rickandmortyapi.com/api/character
-- [ ] GET https://rickandmortyapi.com/api/episode
 
 ## Base de datos
 Tendrá los siguientes modelos:
@@ -99,10 +87,8 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 - [ ] Botón para crear el personaje. 
 
 ## Extras
-Dependiendo de los tiempos que lleve el repaso, se podría agregar:
 - [ ] Ordenamiento
-- [ ] Botón para filtrar por personajes traidos de la Api o creados en la BDD
-- [ ] GET /character/:id
+
 
 
 
