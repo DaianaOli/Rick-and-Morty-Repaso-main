@@ -10,14 +10,12 @@ export function getCharacters({ name, order, page }) {
   return (dispatch) => {
     axios.get(`/characters?name=${name || ''}&order=${order || ''}&page=${page || 1}`)
       .then((characters) => {
-        console.log(characters.data)
         return dispatch({
           type: GET_ALL_CHARACTERS,
           payload: characters.data,
         })
       })
       .catch((err) => {
-        console.log(err)
         return alert("Sorry, not found", err)
       })
   }
