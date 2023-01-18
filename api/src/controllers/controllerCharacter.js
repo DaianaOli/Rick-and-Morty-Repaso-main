@@ -18,7 +18,6 @@ async function getCharacters(req, res, next){
         page = page || 1
         charXPage = 4
         
-
         if(name && name !== ""){
             apiCharacters = (await axios.get(`${URL}?name=${name}`)).data.results
             dbCharacters= await Character.findAll({
@@ -41,7 +40,6 @@ async function getCharacters(req, res, next){
             count: allChars.length,
         })
     } catch (error) {
-        console.log("no va",error)
         return res.sendStatus(500)
     }
 }
@@ -49,7 +47,6 @@ async function getCharacters(req, res, next){
 function createCharacter(req, res, next){
     try {
         let {image, name, species,origin, status, epId} = req.body
-        // console.log(req.body)
         let newCharacter ={            
             image,
             name,
@@ -64,7 +61,7 @@ function createCharacter(req, res, next){
         }
         )
     } catch (error) {
-        console.log("no va",error)
+        return  res.sendStatus(500)
     }
 
 }

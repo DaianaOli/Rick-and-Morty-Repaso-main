@@ -30,11 +30,19 @@ const Nav = () => {
     }
   };
 
+  const enProceso = () => {
+    Swal.fire({
+      icon: "info",
+      title: "En proceso...",
+      text: "Esta funcionalidad se encuentra en proceso de desarrollo",
+    });
+  };
+
   return (
     <div>
-      <Link to="/characters/create">
-        <button className="button">Create Character</button>
-      </Link>
+      {/* <Link to="/characters/create"> */}
+        <button className="button" onClick={enProceso}>Create Character</button>
+      {/* </Link> */}
       <Link to="/">
         <button className="button">Landing Page</button>
       </Link>

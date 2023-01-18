@@ -8,19 +8,16 @@ export const PREVIOUS_PAGE = 'PREVIOUS_PAGE'
 
 export function getCharacters({ name, order, page }) {
   return (dispatch) => {
-    axios
-      .get(
-        `http://localhost:3001/characters?name=${name || ''}&order=${
-          order || ''
-        }&page=${page || 1}`
-      )
+    axios.get(`/characters?name=${name || ''}&order=${order || ''}&page=${page || 1}`)
       .then((characters) => {
+        console.log(characters.data)
         return dispatch({
           type: GET_ALL_CHARACTERS,
           payload: characters.data,
         })
       })
       .catch((err) => {
+        console.log(err)
         return alert("Sorry, not found", err)
       })
   }
@@ -29,7 +26,7 @@ export function getCharacters({ name, order, page }) {
 export function getEpisodes() {
   return (dispatch) => {
     axios
-      .get('http://localhost:3001/episode')
+      .get('/episode')
       .then((episodes) =>
         dispatch({ type: GET_EPISODES, payload: episodes.data })
       )
@@ -39,7 +36,7 @@ export function getEpisodes() {
 export function postCharacter(payload) {
   return async function (dispatch) {
     const newCharacter = await axios.post(
-      'http://localhost:3001/characters/add',
+      '/characters/add',
       payload
     )
     console.log(newCharacter)
@@ -50,7 +47,7 @@ export function postCharacter(payload) {
 export function getCharacterById(id) {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3001/characters/${id}`)
+      .get(`/characters/${id}`)
       .then((character) =>
         dispatch({ type: GET_CHARACTER_BY_ID, payload: character.data })
       )
