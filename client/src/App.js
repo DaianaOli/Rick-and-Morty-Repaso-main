@@ -3,8 +3,8 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import Home from './redux/components/Home'
 import LandingPage from './redux/components/langingPage'
-// import CreateCharacter from './redux/components/CreateCharacter'
 import About from './redux/components/About'
+// import CreateCharacter from './redux/components/CreateCharacter'
 import ("../src/styles/App.css")
 
 function App() {
