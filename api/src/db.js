@@ -31,7 +31,16 @@ let sequelize =
       })
     : new Sequelize(
         `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DATABASE}`,
-        { logging: false, native: false }
+        { 
+          logging: false, 
+          native: false,
+          dialectOptions: {
+            ssl: {
+              require: true,
+              rejectUnauthorized: false,
+            },
+          },
+        }
       );
 const basename = path.basename(__filename)
 
