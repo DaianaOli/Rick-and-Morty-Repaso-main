@@ -1,38 +1,99 @@
-.search{
-    min-width: 200px;
+.search {
+  min-width: 200px;
+  width: 100%;
+  max-width: 400px; /* Ajuste para evitar que se expanda demasiado */
 }
-.filters{
-    color: #fff;
-    text-shadow: 0 0 3px #000;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    background-color: rgba(13, 14, 13, 0.541);
-    padding: 1rem;
-    border-radius: 1rem;
-    margin: 1rem;
-    box-shadow: 0 0 3px #000;
-    border: #fff 1px solid;
 
+.filters {
+  color: #fff;
+  text-shadow: 0 0 3px #000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  background-color: rgba(13, 14, 13, 0.541);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem;
+  box-shadow: 0 0 3px #000;
+  border: #fff 1px solid;
 }
-.filter{
-    display: flex;
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #97f181c0;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 3px #000;
+  border: #fff 1px solid;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  background-color: #97f181c0;
+  padding: 1rem;
+  box-shadow: 0 0 3px #000;
+  border: 1px solid #fff;
+}
+
+/* Responsividad */
+
+/* Tablets y pantallas medianas (máx. 1024px) */
+@media (max-width: 1024px) {
+  .filters {
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    background-color: #97f181c0;
-    padding: 1rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 3px #000;
-    border: #fff 1px solid;
+    align-items: center;
+    padding: 1.5rem;
+  }
+  
+  .filter {
+    width: 80%;
+  }
 }
-.title{
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1rem;
-    background-color: #97f181c0;
+
+/* Móviles (máx. 768px) */
+@media (max-width: 768px) {
+  .search {
+    max-width: 100%;
+  }
+
+  .filters {
+    width: 90%;
     padding: 1rem;
-    box-shadow: 0 0 3px #000;
-    border : 1px solid #fff;
+  }
+
+  .filter {
+    width: 100%;
+    padding: 0.8rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    padding: 0.8rem;
+  }
+}
+
+/* Móviles pequeños (máx. 480px) */
+@media (max-width: 480px) {
+  .filters {
+    width: 90%;
+    padding: 0.5rem;
+  }
+
+  .filter {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
 }
